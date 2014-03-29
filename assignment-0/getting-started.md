@@ -3,7 +3,7 @@ Getting Started
 
 For this class, you'll need to turn in source code for each of your homework assignments. To do so, we'll be committing code from Zephir to GitHub, so that you don't need to copy and paste. The following steps will connect your Zephir directory to your GitHub account, and teach you the commands required to update them.
 
-First things first, you'll need a (GitHub account)[https://github.com] if you don't already have one. An account is free for public repos, which is fine for our purposes. Once you've got that, log into Zephir using PuTTY or another SSH terminal. The username and password [should be similar](http://www.seattlecentral.edu/dmartin/moin/Zephir#How_Accounts_are_Created) to the ones used in the labs.
+First things first, you'll need a [GitHub account](https://github.com) if you don't already have one. An account is free for public repos, which is fine for our purposes. Once you've got that, log into Zephir using PuTTY or another SSH terminal. The username and password [should be similar](http://www.seattlecentral.edu/dmartin/moin/Zephir#How_Accounts_are_Created) to the ones used in the labs.
 
 Once you're logged into Zephir, you should be able to generate the SSH key to connect to GitHub, as in [this article](https://help.github.com/articles/generating-ssh-keys). The SSH key is an encrypted form of ID used to authenticate instead of a password. Type the following command to begin and press enter:
 
