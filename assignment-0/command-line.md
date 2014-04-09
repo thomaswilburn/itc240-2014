@@ -8,7 +8,7 @@ Where Am I, and Why Am I in This Handbasket?
 
 Our first task is just to figure out where we are, and move to another folder. We always start out in our home folder on the server. Our prompt should show this as a `~` character instead of spelling out the full path. For example, when I log in, my prompt looks like this:
 
-```sh
+```
 [twilburn@zephir ~]$
 ```
 
@@ -16,21 +16,21 @@ The `twilburn@zephir` tells me which user I am logged in as, and `~` says I'm st
 
 To see the complete path of my current location, I can type the `pwd` command, which stands for "present working directory".
 
-```sh
+```
 [twilburn@zephir ~]$ pwd
 /home/twilburn
 ```
 
 This result means that on the server's hard drive, I'm located in a folder named after my username, inside another folder named "home." For most students, your home folder will be inside `/home/classes/<username>`. By running `ls`, we can see the contents of this folder.
 
-```sh
+```
 [twilburn@zephir ~]$ ls
 public_html
 ```
 
 To change folders, we use the `cd` command, which stands for "change directory." For example, inside your home folder, you should have a `public_html` folder, as the `ls` command showed above. Folders will be colored differently from regular files, and on Zephir they're bolded. I navigate inside the `public_html` folder with the following command:
 
-```sh
+```
 [twilburn@zephir ~]$ cd public_html
 [twilburn@zephir public_html]$ ls
 head.inc  index.php  second.php
@@ -40,7 +40,7 @@ As you can see, I started in home, or `~`. Then I typed `cd public_html` to say 
 
 If you want to go up in the folder heirarchy, each directory has a special "subdirectory" that's actually a link to its parent folder, named `..` (it also has a link to itself, named `.`). So to move back up into my home folder from its `public_html` subdirectory, I type `cd ..` like so:
 
-```sh
+```
 [twilburn@zephir public_html]$ cd ..
 [twilburn@zephir ~]$
 ```
@@ -50,7 +50,7 @@ Using Nano to Edit Files
 
 To create and edit files on the server, we can use the built-in notepad application, which is called Nano. We won't be using this for the entire class--it's far too simplistic--but it will do for now. To start Nano by itself, we use the `nano` command. Most of the time, we want to create or edit a file. So we'll follow that command with the name of the file we want to edit or create. For example, I might type:
 
-```sh
+```
 nano index.html
 ```
 
@@ -58,7 +58,7 @@ If `index.html` exists, Nano will open that file and show it to us for editing. 
 
 Once you've got a file open in Nano, you'll notice that it has a double row of helpful tips at the bottom. There may also be a message above that, letting you know how many lines are in the current file or other temporary status information.
 
-```sh
+```
 ^G Get Help     ^O WriteOut     ^R Read File    ^Y Prev Page    ^K Cut Text     ^C Cur Pos
 ^X Exit         ^J Justify      ^W Where Is     ^V Next Page    ^U UnCut Text   ^T To Spell
 ```
@@ -78,25 +78,25 @@ Moving, Copying, and Removing Files
 
 Back out of Nano, let's say that you fat-fingered the original command, and now you've saved your file as `index.htmlf`. We want to rename it to `index.html`. In Unix environments like Linux, a "rename" is the same as a "move": you're taking it from one place, and putting it in another. So to rename our file, we use the `mv` command to "move" it to its new filename:
 
-```sh
+```
 mv index.htmlf index.html
 ```
 
 Much better! What if we want to move it between directories? Say, for example, that we created our file in `~`, and not in `~/public_html` where it will be visible to visitors on the web. We need to move it into the subdirectory. That's easy enough: `mv` is smart enough to relocate the file if the second parameter is the name of a directory:
 
-```sh
+```
 mv index.html public_html
 ```
 
 If you also want to change the name of the file when you move it, you can specify that as well. This command will move our file into public_html, but it will also change its name to `index.php`.
 
-```sh
+```
 mv index.html public_html/index.php
 ```
 
 By now, if you've been thinking about the ways that we move around using `cd`, you may have also realized that you can use the `..` directory to move files up a level as well. If we are inside `~/public_html` and want to move a file back up into the home directory, we can do this:
 
-```sh
+```
 mv file.txt ..
 ```
 
@@ -104,7 +104,7 @@ This moves the file into the special `..` directory, which is a link to the pare
 
 Copying files works the same way as moving them, except obviously the original file will still exist. Use the `cp` command to copy a file from one place to another. In class, when we duplicated the `index.php` file into a file named `second.php`, we ran this command:
 
-```sh
+```
 cp index.php second.php
 ```
 
@@ -112,7 +112,7 @@ Deleting files on the server is risky, since there is no Trash or Recycle Bin. O
 
 If you definitely want to delete something, the `rm` command will "remove" it. To get rid of the `second.php` file, we'll type this:
 
-```sh
+```
 rm second.php
 ```
 
