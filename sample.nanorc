@@ -1,0 +1,75 @@
+set autoindent
+set tabsize 2
+unset nowrap
+set tabstospaces
+set smarthome
+#set mouse
+set multibuffer
+#set nohelp
+
+## HTML syntax highlighting
+##
+syntax "html" "\.html$"
+color blue start="<" end=">"
+color red "&[^;[[:space:]]]*;"
+## Here is an example for PHP
+##
+syntax "php" "\.php[2345s~]?$"
+
+# PHP highlighting
+#
+color brightgreen "(<\?(php)?|\?>)"
+## functions
+color white "\<[a-z_]*\("
+## types
+color green "\<(var|float|global|double|bool|char|int|enum|const)\>"
+## structure
+color brightyellow "\<(class|new|private|public|function|for|foreach|if|while|do|else|elseif|case|default|switch)\>"
+## control flow
+color magenta "\<(goto|continue|break|return)\>"
+## strings
+color brightyellow "<[^=       ]*>" ""(\.|[^"])*""
+## comments
+color brightblue "//.*"
+color brightblue start="/\*" end="\*/"
+#color blue start="<" end=">"
+#color red "&[^;[[:space:]]]*;"
+## Trailing whitespace
+color ,green "[[:space:]]+$"
+
+## CSS highlighting
+##
+syntax "css" "\.css$"
+color brightred     "."
+color brightyellow  start="\{" end="\}"
+color brightwhite   start=":" end="([;^\{]|$)"
+color brightblue    ":active|:focus|:hover|:link|:visited|:link|:after|:before|$"
+color brightblue    start="\/\*" end="\\*/"
+color green         ";|:|\{|\}"
+
+#JavaScript highlighting
+syntax "JavaScript" "\.(js)$"
+## Default
+#color black "^.+$" # leave this as the default
+## Decimal, octal and hexadecimal numbers
+color brightblue "\<[-+]?([1-9][0-9]*|0[0-7]*|0x[0-9a-fA-F]+)([uU][lL]?|[lL][uU]?)?\>"
+## Floating point number with at least one digit before decimal point
+color brightblue "\<[-+]?([0-9]+\.[0-9]*|[0-9]*\.[0-9]+)([EePp][+-]?[0-9]+)?[fFlL]?"
+color brightblue "\<[-+]?([0-9]+[EePp][+-]?[0-9]+)[fFlL]?"
+## Keywords
+color cyan "\<(break|case|catch|continue|default|delete|do|else|finally)\>"
+color cyan "\<(for|function|if|in|instanceof|new|null|return|switch)\>"
+color cyan "\<(switch|this|throw|try|typeof|undefined|var|void|while|with)\>"
+## Type specifiers
+color green "\<(Array|Boolean|Date|Enumerator|Error|Function|Math)\>"
+color green "\<(Number|Object|RegExp|String)\>"
+color red "\<(true|false)\>"
+## Escapes
+color blue "\\[0-7][0-7]?[0-7]?|\\x[0-9a-fA-F]+|\\[bfnrt'"\?\\]"
+## Comments
+color magenta start="/\*" end="\*/"
+color magenta "//.*$"
+## String, regex
+color red "L?\"(\\"|[^"])*\""
+color red "L?'(\'|[^'])*'"
+color red "L?\/[^*].*\/[gmix]*"
