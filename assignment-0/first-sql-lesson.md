@@ -143,7 +143,7 @@ FROM [table]     | No        | We may have many tables in a database, so we need
 WHERE [condition]| Yes       | If you want to filter data, only rows that match the WHERE clause will be returned from the database
 ORDER BY [column] ASC/DESC | Yes | You can sort data by using an ORDER BY clause, specifying the column you want to sort by, and the direction (ascending or descending)
 LIMIT [number]   | Yes       | It's possible to only return a few rows by using LIMIT and a number. Combined with ORDER BY, you can get only the top or bottom few rows in a database this way.
-OFFSET [number]  | Yes       | OFFSET allows you to move the starting point of a LIMIT. See below for examples.
+OFFSET [number]  | Yes       | OFFSET allows you to move the starting point of a LIMIT. Useful for pagination: LIMIT is effectively our "page size", and OFFSET is the number of items to skip to get to a given page. See below for examples.
 
 Here are a few sample SQL queries from a hypothetical RSS feed reader, and an explanation of what they mean:
 
@@ -153,6 +153,7 @@ Query | Translation
 `SELECT id, title FROM stories;` | Get two columns of data from a table named "stories"
 `SELECT id, title FROM stories WHERE feed = 137;` | Get two columns from "stories" where the feed ID matches the value `137`.
 `SELECT title, content FROM stories WHERE read = false LIMIT 10` | Get 10 unread stories (title and content) from the database. These will be random stories, since we didn't feature a sort order
-`SELECT title, content FROM stories WHERE read = false ORDER BY published_date DESC LIMIT 10;` | Get the last 10 unread stories in the database (ordered by publication date in descending order with a limit of 10).
+`SELECT title, content FROM stories WHERE read = false ORDER BY published_date DESC LIMIT 10;` | Get the ten most recent unread stories in the database (ordered by publication date in descending order with a limit of 10).
+`SELECT title, content FROM stories WHERE read = false ORDER BY published_date DESC LIMIT 10 OFFSET 10;` | Get stories #11-20 from the recent story list (unread stories in descending order of publication date). This is effectively "page 2" of the previous query.
 
 SQL is an entirely new programming language, in addition to HTML, CSS, and PHP. Working on the web stack requires us to be able to move between these languages easily, so it's not for the faint of heart. Take some time and practice inserting and selecting rows from your database, or creating new tables. Later, we'll learn how to change rows, delete them, and even delete entire tables if necessary.
