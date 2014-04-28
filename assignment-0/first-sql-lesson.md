@@ -16,10 +16,10 @@ For example, let's say that we have a set of data represented by this table:
 If we wanted to only get the classes that took place in BE3156 using PHP, we'd have to look through all the results, like so:
 
 ```php
-$result = [];
-foreach ($classes as $class) {
-  if ($class["room"] == "BE3156") {
-    $result[] = $class;
+$result = []; //create an array to store filtered results
+foreach ($classes as $class) { //loop through the classes
+  if ($class["room"] == "BE3156") { //if this matches...
+    $result[] = $class; //add it to the result array
   }
 }
 ```
@@ -30,7 +30,7 @@ But in SQL, it's a lot easier to express what we want:
 SELECT * FROM classes WHERE room = 'BE3156';
 ```
 
-So elegant! So simple! When it comes to retrieving and updating organized data, it doesn't get much better than SQL. There are many flavors of SQL, depending on the database that you're using, but they all work roughly the same way, and most of the time skills will transfer from one to the other.
+So elegant! So simple! When it comes to retrieving and updating organized data, it doesn't get much better than SQL. There are many flavors of the language, depending on the database that you're using, but they all work roughly the same way, and most of the time skills will transfer from one to the other. There are also databases that do not use SQL at all, such as Couch and Mongo, but we won't be covering those in this class.
 
 Let's set up a simple database table that we can use for some queries from a web page. First, go [set up your MySQL account on Zephir](https://zephir.seattlecentral.edu/mysql). Then log in with PuTTY and run the following command to log into your personal database:
 
@@ -38,16 +38,29 @@ Let's set up a simple database table that we can use for some queries from a web
 mysql -D [username] -p
 ```
 
-The result should be a `mysql>` prompt where you can type. The `mysql` program on Zephir is a command line for accessing databases--a REPL (read-execute-print loop) just like the PHP interpreter mode we used in class to test simple ideas. If it seems like we're using the command line a lot, that's because many of our most technical tools for web development run on the command line for its flexibility and precision. It's in your best interest to become comfortable with it, hence our emphasis in this class.
+The result should be a `mysql>` prompt where you can type queries. The `mysql` program on Zephir is a command line for accessing databases--a REPL (read-execute-print loop) just like the PHP interpreter mode we used in class to test simple ideas. If it seems like we're using the command line a lot, that's because many of our most technical tools for web development run on the command line for its flexibility and precision. It's in your best interest to become comfortable with it, hence our emphasis in this class.
 
-First things first, we need to make a table. We're going to start with a simple set of names combined with numbers. First, we need to set up the columns for our table, so we're going to run a `CREATE TABLE` command. This command includes the names and types of each column in the parentheses: one that's a text column for the names, and another that's integers (whole numbers) for their ID numbers.
+First things first, we need to make a table. We're going to start with a simple set of names combined with numbers. We need to set up the columns for our table, so we're going to run a `CREATE TABLE` command. This command includes the names and types of each column in the parentheses: one that's a text column for the names, and another that's integers (whole numbers) for their ID numbers.
 
 ```
 mysql> CREATE TABLE test (name TEXT, id INTEGER);
 Query OK, 0 rows affected (0.01 sec)
 ```
 
-As a matter of routine, I usually capitalize SQL commands like `CREATE TABLE` or `TEXT` to distinguish them from table or column names, but the language itself is case-insensitive. To see the table we just created, let's type two commands, `SHOW TABLES` and `SHOW COLUMNS IN test`.
+The list of columns and types in the parentheses is known as a _table schema_. There are actually many types of columns available to us, but the most common are:
+
+Type | Description
+-----|------------
+TEXT | Strings of variable length
+BOOL | `true` or `false` stored as `1` or `0`, respectively
+INT  | Integers (whole numbers)
+FLOAT | Floating point numbers (fractions)
+DATE | A calendar date
+DATETIME | A calendar date including the time of day
+
+For the most part, these should map pretty cleanly to the PHP types that we have already learned about. There are no arrays in SQL, because we already have rows and columns to store array-like data in the table itself.
+
+As a matter of routine, I usually capitalize SQL commands like `CREATE TABLE` or `TEXT` to distinguish them from table or column names, but the language itself is case-insensitive. It also ignores whitespace, so feel free to use as many returns and tabs to make your queries readable, as long as you end them with a semicolon (`;`). To see the table we just created, let's type two commands, `SHOW TABLES` and `SHOW COLUMNS IN test`.
 
 ```
 mysql> show tables;
