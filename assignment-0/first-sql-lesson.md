@@ -35,7 +35,7 @@ So elegant! So simple! When it comes to retrieving and updating organized data, 
 Let's set up a simple database table that we can use for some queries from a web page. First, go [set up your MySQL account on Zephir](https://zephir.seattlecentral.edu/mysql). Then log in with PuTTY and run the following command to log into your personal database:
 
 ```
-mysql -D [username] -p
+mysql -D your_username -p
 ```
 
 The result should be a `mysql>` prompt where you can type queries. The `mysql` program on Zephir is a command line for accessing databases--a REPL (read-execute-print loop) just like the PHP interpreter mode we used in class to test simple ideas. If it seems like we're using the command line a lot, that's because many of our most technical tools for web development run on the command line for its flexibility and precision. It's in your best interest to become comfortable with it, hence our emphasis in this class. At any time, you can type `help` in the interpreter for a list of useful commands, and `exit` to leave.
