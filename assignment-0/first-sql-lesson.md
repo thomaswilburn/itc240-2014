@@ -55,6 +55,7 @@ TEXT | Strings of variable length
 BOOL | `true` or `false` stored as `1` or `0`, respectively
 INT  | Integers (whole numbers)
 FLOAT | Floating point numbers (fractions)
+SERIAL | Unique numbers created for you automatically (think IDs)
 DATE | A calendar date
 DATETIME | A calendar date including the time of day
 
