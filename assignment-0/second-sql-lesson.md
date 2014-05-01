@@ -20,7 +20,7 @@ CREATE TABLE users (
   username TEXT,
   email TEXT,
   date_created DATE,
-  premium_member BOOL
+  premium_member BOOLEAN
 );
 ```
 
