@@ -22,7 +22,7 @@ But what happens if, instead of providing a valid username, they include the fol
 SELECT * FROM users WHERE username = '' OR 1 = 1; --';
 ```
 
-The `--` sequence in SQL signifies a line comment, similar to `//` in PHP, so now your query will select all users (after all, `1 = 1` is always true in the `WHERE` clause, so all rows will be returned from the database). By including their own closing quote and then writing in some valid SQL code, this user just managed to get access to all your user records. That's probably a bad thing. 
+The `--` sequence in SQL signifies a line comment, similar to `//` in PHP, so now your query will select all users instead of just one (after all, `1 = 1` is always true in the `WHERE` clause, so all rows will be returned from the database). By including their own closing quote, writing in some valid SQL code, and commenting out the leftovers from your statement, this user just managed to get access to all your user records. That's probably a bad thing. 
 
 It's especially bad, because they don't just have to write a SELECT statement. You may have seen this XKCD comic floating around:
 
