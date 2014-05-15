@@ -85,7 +85,7 @@ mysql> show columns in test;
 Now we have a table, but there's nothing in it. We need to put some data into this table. In SQL, we insert data by, simply enough, writing an `INSERT` statement. When we insert data, we have to let it know which table we want to insert rows into, then write out the rows in parentheses, with text in single quotes only. So to insert four rows with new names and ID numbers, we can write:
 
 ```
-INSERT INTO test VALUES ('Alice', 1),('Bob', 2),('Charlie', 3),('Dana', 4);
+INSERT INTO test (name, id) VALUES ('Alice', 1),('Bob', 2),('Charlie', 3),('Dana', 4);
 ```
 
 You should see a line saying something like "Query OK, 4 rows affected" to confirm that the `INSERT` was successful. Now let's take a look at the data. We'll use a `SELECT` statement to see what we put into the database. I wrote a `SELECT` statement above, when I talked about getting certain information from a table, but in this one we're just going to ask for everything:
