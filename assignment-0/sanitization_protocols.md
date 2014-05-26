@@ -28,7 +28,7 @@ Creating secure web pages is difficult, not because of the theory required or th
 It may be helpful to think about security as a kind of rock-paper-scissors. After all, each stage of the application is vulnerable to a different kind of attack, and we use different tools to protect each one:
 
 | Layer | Input from | Vulnerable to | Protected by |
-+-------+------------+---------------+--------------+
+|-------|------------|---------------|--------------|
 | HTML | User input (query string or posted data), database output | Malicious `<script>` and `<style>` tags | `htmlentities()` |
 | SQL | User input from PHP | SQL commands injected into the input | Prepared statements and whitelists |
 
