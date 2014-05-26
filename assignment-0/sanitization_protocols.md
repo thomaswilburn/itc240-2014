@@ -39,14 +39,14 @@ Attacking the Browser
 
 When we talk about attacking the browser, we're mostly describing the process of getting the page to run code that the author didn't write. For example, if we can sneak a `<script>` tag into the page, we can run JavaScript that would steal the user's cookies and send them to someone else. Any foothold is enough, since it only takes a single line of code to include another JavaScript file, this one with whatever code we want:
 
-```js
-document.body.innerHTML += "<script src='evil.js'></script>";
+```php
+<?= "<script src='evil.js'></script>" ?>
 ```
 
 For this reason, we need to prevent users from ever being able to inject their content into the page where it will be treated as HTML/CSS/JavaScript and not as text. To do this, we use the `htmlentities()` function to turn special HTML characters into their escaped versions. The above code, for example will turn into:
 
-```js
-document.body.innerHTML += &quot;&lt;script src=&quot;evil.js'&gt;&lt;/script&gt&quot;;
+```php
+<?= "&quot;&lt;script src=&quot;evil.js'&gt;&lt;/script&gt&quot;" ?>
 ```
 
 Now, instead of actually running this JavaScript, it will add the code to the body as text, including the angle brackets and quote characters--annoying, perhaps, but not actually dangerous.
